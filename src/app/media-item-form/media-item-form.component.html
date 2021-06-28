@@ -6,8 +6,7 @@
         <li>
             <label for="medium">Medium</label>
             <select name="medium" id="medium" formControlName="medium">
-                <option value="Movies">Movies</option>
-                <option value="Series">Series</option>
+                <option *ngFor="let medium of lookupLists.mediums" value="{{medium}}">{{medium}}</option>
             </select>
         </li>
         <li>
@@ -32,9 +31,12 @@
             <label for="year">Year</label>
             <input type="text" name="year" id="year" maxlength="4" formControlName="year">
             <div *ngIf="form.get('year').errors as yearErrors" class="error">
-                Year must be between {{yearErrors.year.min}} and {{yearErrors.year.max}}
+                Must be between
+                {{yearErrors.year.min}}
+                and
+                {{yearErrors.year.max}}
             </div>
         </li>
     </ul>
-    <button [disabled]="!form.valid" type="submit">Save</button>
+    <button type="submit" [disabled]="!form.valid">Save</button>
 </form>
