@@ -13,6 +13,6 @@ export class CategoryListPipe implements PipeTransform {
                 categories.push(mediaItem.category);
             }
         });
-        return categories.join(', ');
+        return categories;
     }
 }
